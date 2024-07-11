@@ -1,0 +1,202 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+
+local Window = OrionLib:MakeWindow({Name = "Tom Hub | Hide and Seek", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+
+local Tab = Window:MakeTab({
+	Name = "Main",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local Section = Tab:AddSection({
+	Name = "Bruh"
+})
+
+OrionLib:MakeNotification({
+	Name = "Tom Hub",
+	Content = "dảk dảk bruh bruh lamao",
+	Image = "rbxassetid://4483345998",
+	Time = 5
+})
+
+Tab:AddLabel("Fram")
+Tab:AddToggle({
+	Name = "AFK FRAM",
+	Default = false,
+	Callback = function(Value)
+		print(Value)
+		local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+
+local teleportPosition = Vector3.new(330, 158, -33)
+
+local function teleportToPosition(position)
+    LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(position)
+end
+
+teleportToPosition(teleportPosition)
+	end    
+})
+
+Tab:AddToggle({
+	Name = "IT PLAYER FRAM",
+	Default = false,
+	Callback = function(Value)
+		print(Value)
+		local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+
+-- Function to teleport to a player
+local function teleportToPlayer(player)
+    local character = player.Character
+    if character then
+        local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
+        if humanoidRootPart then
+            LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(humanoidRootPart.Position)
+        end
+    end
+end
+
+-- Teleport to each player in the game
+for _, player in ipairs(Players:GetPlayers()) do
+    if player ~= LocalPlayer then
+        teleportToPlayer(player)
+        wait(0.01) -- Adjust this delay as needed to control the teleport speed
+    end
+end
+	end    
+})
+
+Tab:AddLabel("Fram2")
+Tab:AddToggle({
+	Name = "Fram coin",
+	Default = false,
+	Callback = function(Value)
+		print(Value)
+		-- Client-side script (LocalScript)
+local humanoid = game:GetService("Players").LocalPlayer.Character:WaitForChild("Humanoid")
+local creditsModel = game.Workspace:WaitForChild("GameObjects")
+
+-- Store the humanoid's original position
+local originalPosition = humanoid.RootPart.CFrame
+
+-- Teleport to each credit
+local parts = creditsModel:GetDescendants()
+for _, part in ipairs(parts) do
+    if part:IsA("BasePart") then
+        humanoid.RootPart.CFrame = part.CFrame
+        wait() -- Adjust the wait duration if needed
+    end
+end
+
+-- Teleport back to the original position
+humanoid.RootPart.CFrame = originalPosition
+	end    
+})
+
+local Tab = Window:MakeTab({
+	Name = "Esp",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local Section = Tab:AddSection({
+	Name = "Burh"
+})
+
+OrionLib:MakeNotification({
+	Name = "Tom Hub",
+	Content = "Tom Hub | Ez gg🤓",
+	Image = "rbxassetid://4483345998",
+	Time = 5
+})
+
+Tab:AddLabel("Esp")
+Tab:AddToggle({
+	Name = "Esp Box Helt [Auto]",
+	Default = true,
+	Callback = function(Value)
+		print(Value)
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/Blissful4992/ESPs/main/2D%20Box%20ESP/ESP%20%2B%20Health%20Bars.lua"))()
+	end    
+})
+
+Tab:AddToggle({
+	Name = "Esp Name [ Auto ]",
+	Default = true,
+	Callback = function(Value)
+		print(Value)
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/Eazvy/UILibs/main/ESP/Name/Example"))()
+	end    
+})
+
+local Tab = Window:MakeTab({
+	Name = "Setting",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+OrionLib:MakeNotification({
+	Name = "Tom Hub",
+	Content = "Thank for Lion Kc Lee Review Script Me💗",
+	Image = "rbxassetid://4483345998",
+	Time = 5
+})
+
+Tab:AddLabel("Fly+Noclip")
+Tab:AddButton({
+	Name = "Fly",
+	Callback = function()
+      		print("button pressed")
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/ttuws/Flylewv1/main/FlyGuiV3.txt"))() 
+  	end    
+})
+
+Tab:AddButton({
+	Name = "Noclip",
+	Callback = function()
+      		print("button pressed")
+      local runService = game:GetService("RunService")
+local player = game:GetService("Players").LocalPlayer
+
+_G.noclip = not _G.noclip
+
+local function ToggleCollision(part)
+    if part:IsA("BasePart") then
+        part.CanCollide = false
+    end
+end
+
+local function NoClipCallback()
+    if _G.noclip then
+        for _, character in ipairs(player.Character:GetDescendants()) do
+            ToggleCollision(character)
+        end
+    end
+end
+
+runService.Stepped:Connect(NoClipCallback)
+
+game.StarterGui:SetCore("SendNotification", {Title="PJEX"; Text="Noclip Activated!"; Duration=5;})
+  	end    
+})
+
+Tab:AddLabel("Speed+Jumpower")
+Tab:AddToggle({
+	Name = "Walk Speed [35] [Anti-Cheat]",
+	Default = false,
+	Callback = function(Value)
+		print(Value)
+		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 33
+	end    
+})
+
+Tab:AddToggle({
+	Name = "Jumpower 65",
+	Default = false,
+	Callback = function(Value)
+		print(Value)
+		game.Players.LocalPlayer.Character.Humanoid.JumpPower = 65
+	end    
+})
+
